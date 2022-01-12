@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block title %}Contact{% endblock title %}
+{% block body %}
+<main id="main">
+  
+    <!-- About Section -->
+    <section class="page-section" id="about">
+        <div class="container relative">
+        
+            <h2 class="section-title font-alt align-left mb-70 mb-sm-40">
+        KALKULATUR
+            </h2>
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <i class="fa fa-check-circle" aria-hidden="true"></i>  {{ message }}
+            
+                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            
+              
+        
+             {% endfor %}
+            {% endif %}
+            <form method="post" class="form contact-form" action="/contact">
+                {% csrf_token %}
+                
+          
+               
+                <div class="clearfix">
+                    
+                    <div class="cf-left-col">
+                        
+                        <!-- Name -->
+                        <div class="form-group">
+                            <input type="text" name="name" id="name" class="input-md round form-control" placeholder="Name" pattern=".{3,100}" required aria-required="true">
+                        </div>
+                        
+                        <!-- Email -->
+                        <div class="form-group">
+                            <input type="email" name="email" id="email" class="input-md round form-control" placeholder="Email" pattern=".{5,100}" required aria-required="true">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="phone" id="phone" class="input-md round form-control" placeholder="Phone" pattern=".{3,100}" required aria-required="true">
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="cf-right-col">
+                       
+                        <!-- Message -->
+                        <div class="form-group">                                            
+                            <textarea name="desc" id="" class="input-md round form-control" style="height: 136px;" type="submit" placeholder="Message"></textarea>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+                <div class="clearfix">
+                    
+                    <div class="cf-left-col">
+                        
+                        <!-- Inform Tip -->                                        
+                        <div class="form-tip pt-20">
+                            <i class="fa fa-info-circle"></i> All the fields are required
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="cf-right-col">
+                        
+                        <!-- Send Button -->
+                        <div class="align-right pt-10">
+                            
+                            <button class="submit_btn btn btn-mod btn-medium btn-round" type="submit"  aria-controls="result">Submit Message</button>
+                        </div>
+                        
+                    </div>
+                </div>
+                   
+
+                
+                
+                
+                
+               
+            </form>
+
+           
+   
+        </div>
+    </section>
+  </main>
+{% endblock body %}
